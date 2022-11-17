@@ -2,10 +2,11 @@
 
 * {
   box-sizing: border-box;
+  /* background-color: #22254b; */
 }
 
 body {
-  background-color: #22254b;
+  /* background-color: #22254b; */
   color: white;
   font-family: "Poppins", sans-serif;
   margin: 0;
