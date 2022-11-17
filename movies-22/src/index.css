@@ -12,6 +12,28 @@ body {
   margin: 0;
 }
 
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #373b69;
+  display: flex;
+  padding: 1rem;
+  justify-content: flex-end;
+}
+
+.search {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(151, 151, 151);
+  border-radius: 20px;
+  color: #292929;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.3rem 1rem;
+}
+
 .movie-container {
   display: flex;
   flex-wrap: wrap;
@@ -43,7 +65,7 @@ body {
 }
 
 .movie-over {
-  background-color: white;
+  background-color: #373b69;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.1);
