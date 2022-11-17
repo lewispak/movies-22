@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Movie = () => (
+const IMAGE_API = "https://image.tmdb.org/t/p/w1280";
+
+const Movie = ({ title, poster_path, overview, vote_average}) => (
+    
     <div className="movie">
-        This ia movie component
+        <img src={IMAGE_API + poster_path} alt={title} />
     </div>
 )
 
