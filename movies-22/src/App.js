@@ -3,26 +3,55 @@ import React, { useEffect, useState } from 'react';
 import Movie from './components/Movie';
 
 // Shouldn't have API key in API. This is for test puposes only.
-const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
-const SEARCH_API = "https://api.themoviedb.org/3/search/movies?&api_key=04c35731a5ee918f014970082a0088b1&query=";
+// API from https://developers.themoviedb.org/3
+// My Movie DB API Key: 49247a8180475872d16c9bea956e9598
+const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=49247a8180475872d16c9bea956e9598&page=1";
+const SEARCH_API = "https://api.themoviedb.org/3/search/movie?&api_key=49247a8180475872d16c9bea956e9598&query=";
 
 function App() {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(" ");
 
   useEffect(() => {
     fetch(FEATURED_API)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setMovies(data.results);
       })
   }, [])
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    if(searchTerm) {
+      fetch(SEARCH_API + searchTerm)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setMovies(data.results);
+      })
+
+    setSearchTerm(" ");
+    }
+  }
+
+  const handleOnChange = (e) => {
+    setSearchTerm(e.target.value);
+  }
+
   return (
     <div>
-      
       <header>
-        <input className="search" type="text" placeholder="Search..." />
+        <form onSubmit={handleOnSubmit}>
+          <input 
+            className="search" 
+            type="text" 
+            placeholder="Search..." 
+            value={searchTerm}
+            onChange={handleOnChange}
+            />
+        </form>
       </header>
 
       <div className="movie-container">
